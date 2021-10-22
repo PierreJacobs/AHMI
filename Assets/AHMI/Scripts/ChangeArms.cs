@@ -7,9 +7,10 @@ public class ChangeArms : MonoBehaviour
 {
 
     bool bIsLeftPalmUp;
-    public int update_rate;
     public int xVelocity;
-    int tick;
+    
+    public float fRestTime;
+    float fElaspedTime;
 
     Controller controller;
 
@@ -17,8 +18,8 @@ public class ChangeArms : MonoBehaviour
     void Start()
     {
         this.bIsLeftPalmUp = false;
+        fElaspedTime = 0;
         controller = new Controller();
-        tick = update_rate;
     }
 
     // Update is called once per frame
@@ -33,23 +34,22 @@ public class ChangeArms : MonoBehaviour
             foreach (Hand hand in hands) if (hand.IsRight) hRightHand = hand;
         }
 
-        if (hRightHand != null && this.bIsLeftPalmUp && tick <= 0 && hRightHand.PalmNormal.x < -0.5) {
+        if (hRightHand != null && this.bIsLeftPalmUp && fElaspedTime <= 0 && hRightHand.PalmNormal.x < -0.5) {
             
             if (hRightHand.PalmVelocity.x < -xVelocity) { 
                 print("Move Done!!! To the left"); 
-                tick = update_rate; 
+                fElaspedTime = fRestTime;
                 //TODO: Interact with robot
                 }
 
             else if (hRightHand.PalmVelocity.x > xVelocity) {
                  print("Move Done!!! To the right"); 
-                 tick = update_rate; 
+                 fElaspedTime = fRestTime;
                 //TODO: Interact with robot
             }
         }
 
-        tick--;
-
+        fElaspedTime -= Time.deltaTime;
     }
 
     public void LeftPalmUp() { this.bIsLeftPalmUp = true; }
