@@ -1,6 +1,6 @@
 # AHMI Project
 
-<span style="color:red">This project requires Unity</span>
+<span style="color:red">This project requires Unity.</span>
 
 ## Clone repository:
 
