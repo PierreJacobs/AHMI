@@ -41,16 +41,14 @@ public class ChangeArms : MonoBehaviour
         if (hRightHand != null && this.bIsLeftPalmUp && fElaspedTime <= 0 && hRightHand.PalmNormal.x < -0.5) {
             
             if (hRightHand.PalmVelocity.x < -xVelocity) { 
-                print("Move Done!!! To the left"); 
+                // print("Move Done!!! To the left"); 
                 fElaspedTime = fRestTime;
-                //TODO: Interact with robot
                 RobotScript.TurnLeft();
-                }
+            }
 
             else if (hRightHand.PalmVelocity.x > xVelocity) {
-                 print("Move Done!!! To the right"); 
-                 fElaspedTime = fRestTime;
-                //TODO: Interact with robot
+                // print("Move Done!!! To the right"); 
+                fElaspedTime = fRestTime;
                 RobotScript.TurnRight();
             }
         }
