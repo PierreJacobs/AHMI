@@ -14,12 +14,16 @@ public class ChangeArms : MonoBehaviour
 
     Controller controller;
 
+    public GameObject Robot;
+    RobotBehaviours RobotScript;
+
     // Start is called before the first frame update
     void Start()
     {
         this.bIsLeftPalmUp = false;
         fElaspedTime = 0;
         controller = new Controller();
+        this.RobotScript = Robot.GetComponent<RobotBehaviours>();
     }
 
     // Update is called once per frame
@@ -40,12 +44,14 @@ public class ChangeArms : MonoBehaviour
                 print("Move Done!!! To the left"); 
                 fElaspedTime = fRestTime;
                 //TODO: Interact with robot
+                RobotScript.TurnLeft();
                 }
 
             else if (hRightHand.PalmVelocity.x > xVelocity) {
                  print("Move Done!!! To the right"); 
                  fElaspedTime = fRestTime;
                 //TODO: Interact with robot
+                RobotScript.TurnRight();
             }
         }
 
