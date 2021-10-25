@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 
 public class RobotBehaviours : MonoBehaviour
 {
 
     enum Arms : ushort { Hammer, Unused, Clamp, Welder }
-    Arms [] arms = {Arms.Hammer, Arms.Unused, Arms.Clamp, Arms.Welder};
     public int currentHandQuadrant = 0;
+
+    public Text tTextElement;
 
     public int getHand() { 
         int mod = 0;
@@ -31,7 +34,7 @@ public class RobotBehaviours : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(arms[getHand()]);
+        tTextElement.text = "Arm: " + Enum.GetName(typeof(Arms), getHand());
         circleObject.transform.rotation = Quaternion.Slerp(circleObject.transform.rotation, Quaternion.Euler(0, this.currentHandQuadrant*90, 0), Time.deltaTime * RotationSpeed);
     }
 }
