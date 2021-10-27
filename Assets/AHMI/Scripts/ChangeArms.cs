@@ -6,7 +6,6 @@ using Leap;
 public class ChangeArms : MonoBehaviour
 {
 
-    bool bIsLeftPalmUp;
     public int xVelocity;
     
     public float fRestTime;
@@ -17,13 +16,17 @@ public class ChangeArms : MonoBehaviour
     public GameObject Robot;
     RobotBehaviours RobotScript;
 
+    public GameObject RigidRoundHand_L;
+    PalmsOrientation PalmsOrientationScript;
+
     // Start is called before the first frame update
     void Start()
     {
-        this.bIsLeftPalmUp = false;
         fElaspedTime = 0;
         controller = new Controller();
+
         this.RobotScript = Robot.GetComponent<RobotBehaviours>();
+        this.PalmsOrientationScript = RigidRoundHand_L.GetComponent<PalmsOrientation>();
     }
 
     // Update is called once per frame
@@ -38,16 +41,14 @@ public class ChangeArms : MonoBehaviour
             foreach (Hand hand in hands) if (hand.IsRight) hRightHand = hand;
         }
 
-        if (hRightHand != null && this.bIsLeftPalmUp && fElaspedTime <= 0 && hRightHand.PalmNormal.x < -0.5) {
+        if (hRightHand != null && this.PalmsOrientationScript.IsLeftPalmUp() && fElaspedTime <= 0 && hRightHand.PalmNormal.x < -0.5) {
             
             if (hRightHand.PalmVelocity.x < -xVelocity) { 
-                // print("Move Done!!! To the left"); 
                 fElaspedTime = fRestTime;
                 RobotScript.TurnLeft();
             }
 
             else if (hRightHand.PalmVelocity.x > xVelocity) {
-                // print("Move Done!!! To the right"); 
                 fElaspedTime = fRestTime;
                 RobotScript.TurnRight();
             }
@@ -55,8 +56,5 @@ public class ChangeArms : MonoBehaviour
 
         fElaspedTime -= Time.deltaTime;
     }
-
-    public void LeftPalmUp() { this.bIsLeftPalmUp = true; }
-    public void LeftPalmNotUp() { this.bIsLeftPalmUp = false; }
 
 }
