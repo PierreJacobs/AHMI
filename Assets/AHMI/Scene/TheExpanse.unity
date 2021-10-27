@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14319831, g: 0.19458419, b: 0.12556678, a: 1}
+  m_IndirectSpecularColor: {r: 0.14314696, g: 0.19455391, b: 0.12547484, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -434,6 +434,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 196280, guid: 23f2cce114628a448bfeaae171b4c0c0, type: 3}
   m_PrefabInstance: {fileID: 1367067090}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &463762195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463762194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0840ec5e9fe4c44b07356b8e3fd89a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &463762196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +461,7 @@ MonoBehaviour:
   xVelocity: 1000
   fRestTime: 0.4
   Robot: {fileID: 7686185091571408044}
+  RigidRoundHand_L: {fileID: 463762194}
 --- !u!114 &463762197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,8 +477,8 @@ MonoBehaviour:
   OnActivate:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 463762196}
-        m_TargetAssemblyTypeName: ChangeArms, Assembly-CSharp-firstpass
+      - m_Target: {fileID: 463762195}
+        m_TargetAssemblyTypeName: PalmsOrientation, Assembly-CSharp
         m_MethodName: LeftPalmUp
         m_Mode: 1
         m_Arguments:
@@ -479,8 +492,8 @@ MonoBehaviour:
   OnDeactivate:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 463762196}
-        m_TargetAssemblyTypeName: ChangeArms, Assembly-CSharp-firstpass
+      - m_Target: {fileID: 463762195}
+        m_TargetAssemblyTypeName: PalmsOrientation, Assembly-CSharp
         m_MethodName: LeftPalmNotUp
         m_Mode: 1
         m_Arguments:
