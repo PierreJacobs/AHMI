@@ -5,7 +5,7 @@ using Leap;
 using Leap.Unity;
 using Leap.Unity.Attributes;
 
-public abstract class Gesture
+public abstract class Gesture : MonoBehaviour
 {
     private GameObject RigidRoundHand_L; // left hand gameobject
 
@@ -13,11 +13,17 @@ public abstract class Gesture
     private Controller controller;
     private Hand hLeftHand; // left hand (detection)
     private Hand hRightHand; // right hand (detection)
+    private RobotBehaviours RobotScript;
     
-    public void startSetup(GameObject left, GameObject right, Controller controller) {
+    public void startSetup(GameObject left, GameObject right, Controller controller, RobotBehaviours robotScript) {
         this.RigidRoundHand_L = left;
         this.RigidRoundHand_R = right;
         this.controller = controller;
+        this.RobotScript = robotScript;
+    }
+
+    protected RobotBehaviours GetRobot() {
+        return this.RobotScript;
     }
 
     protected Hand getLeftHand() {
@@ -38,10 +44,12 @@ public abstract class Gesture
          && (!this.needRightHand() || (this.getRightHand() != null && this.checkRightHand()))) {
              this.processGestures();
          }
-
+        this.processOthers();
     }
 
     protected abstract void processGestures();
+
+    protected abstract void processOthers();
 
     private void updateHands() {
         Frame fFrame = controller.Frame ();

@@ -11,7 +11,6 @@ public class ChangeArmsGesture : Gesture
 
     public int xVelocity;
     public float fRestTime;
-    RobotBehaviours RobotScript;
 
 
     protected new bool needLeftHand() {
@@ -33,12 +32,17 @@ public class ChangeArmsGesture : Gesture
     protected override void processGestures() {
         if (this.getRightHand().PalmVelocity.x < -xVelocity) { 
                 fElaspedTime = fRestTime;
-                RobotScript.TurnLeft();
+                this.GetRobot().TurnLeft();
         }
         else if (this.getRightHand().PalmVelocity.x > xVelocity) {
                 fElaspedTime = fRestTime;
-                RobotScript.TurnRight();
+                this.GetRobot().TurnRight();
         }
+        
+    }
+
+    protected override void processOthers()
+    {
         fElaspedTime -= Time.deltaTime;
     }
 }

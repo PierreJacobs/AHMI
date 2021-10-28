@@ -453,7 +453,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463762194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95ac11135eb4a7d4aa2243073784f18c, type: 3}
   m_Name: 
@@ -512,6 +512,69 @@ MonoBehaviour:
   OnAngle: 45
   OffAngle: 65
   ShowGizmos: 1
+--- !u!1 &491296579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 491296582}
+  - component: {fileID: 491296581}
+  - component: {fileID: 491296580}
+  m_Layer: 0
+  m_Name: GesturesController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &491296580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491296579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94db59624cdd2c45a4bf7b16f6b4237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xVelocity: 1000
+  fRestTime: 0.4
+--- !u!114 &491296581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491296579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00afcbdd49bcde142a41f491b40ca416, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RigidRoundHand_L: {fileID: 463762194}
+  RigidRoundHand_R: {fileID: 678487716}
+  gestures:
+  - {fileID: 491296580}
+  Robot: {fileID: 7686185091571408044}
+--- !u!4 &491296582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491296579}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 252.45854, y: 36.914276, z: -161.62714}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &496194602
 PrefabInstance:
   m_ObjectHideFlags: 0

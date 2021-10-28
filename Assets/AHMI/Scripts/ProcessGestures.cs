@@ -13,11 +13,13 @@ public class ProcessGestures : MonoBehaviour
     // Start is called before the first frame update
 
     private Controller controller;
+    public GameObject Robot;
+
     void Start()
     {
         this.controller = new Controller();
         foreach(Gesture gesture in gestures) {
-            gesture.startSetup(this.RigidRoundHand_L, this.RigidRoundHand_R, this.controller);
+            gesture.startSetup(this.RigidRoundHand_L, this.RigidRoundHand_R, this.controller, Robot.GetComponent<RobotBehaviours>());
         }
     }
 
