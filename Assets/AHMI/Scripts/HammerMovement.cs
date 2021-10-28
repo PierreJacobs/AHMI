@@ -7,6 +7,7 @@ public class HammerMovement : MonoBehaviour
 {
 
     bool bIsRightHandClose = false;
+    bool bIsRightHandDown = false;
     public int yVelocity;
 
     public float fRestTime;
@@ -36,16 +37,19 @@ public class HammerMovement : MonoBehaviour
             foreach (Hand hand in hands) if (hand.IsRight) hRightHand = hand;
         }
 
+        // TODO: Vérifier que le bras sélectionné est bien Arm.Hammer
         if (hRightHand != null && !PalmsOrientationScript.IsLeftPalmUp() && fElaspedTime <= 0 && this.bIsRightHandClose) {
-            if (hRightHand.PalmVelocity.y < -yVelocity) {
+            if (hRightHand.PalmVelocity.y < -yVelocity && !this.bIsRightHandDown) {
                 //TODO: make hammer go down
                 print("Hammer goes down");
                 fElaspedTime = fRestTime;
+                this.bIsRightHandDown = true;
             }
-            else if (hRightHand.PalmVelocity.y > (yVelocity/2)) {
+            else if (hRightHand.PalmVelocity.y > (yVelocity/2) && this.bIsRightHandDown) {
                 //TODO: make hammer go up
-                print("Hammer does up");
+                print("Hammer goes up");
                 fElaspedTime = fRestTime;
+                this.bIsRightHandDown = false;
             }
         }
 

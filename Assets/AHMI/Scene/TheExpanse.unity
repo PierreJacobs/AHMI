@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.14314696, g: 0.19455391, b: 0.12547484, a: 1}
+  m_IndirectSpecularColor: {r: 0.14319831, g: 0.19458419, b: 0.12556678, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1431,8 +1431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112cfb2fb16ece342b333acd07a7dccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yVelocity: 1200
-  fRestTime: 0.4
+  yVelocity: 800
+  fRestTime: 0.2
   RigidRoundHand_L: {fileID: 463762194}
 --- !u!114 &678487718
 MonoBehaviour:
@@ -1477,13 +1477,13 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   Period: 0.1
-  HandModel: {fileID: 0}
+  HandModel: {fileID: 867040963}
   Thumb: 1
   Index: 1
   Middle: 1
   Ring: 1
   Pinky: 1
-  MinimumExtendedCount: 1
+  MinimumExtendedCount: 0
   MaximumExtendedCount: 0
   ShowGizmos: 1
 --- !u!1 &692589810
