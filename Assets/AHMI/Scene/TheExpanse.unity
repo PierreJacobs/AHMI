@@ -1414,6 +1414,78 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8515ebee271c0649b9db1321f3026a4, type: 3}
+--- !u!1 &678487716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 166188, guid: c8515ebee271c0649b9db1321f3026a4, type: 3}
+  m_PrefabInstance: {fileID: 678487715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &678487717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678487716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112cfb2fb16ece342b333acd07a7dccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yVelocity: 1200
+  fRestTime: 0.4
+  RigidRoundHand_L: {fileID: 463762194}
+--- !u!114 &678487718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678487716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98e641d160144e87a3d33fcdb893a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnActivate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 678487717}
+        m_TargetAssemblyTypeName: HammerMovement, Assembly-CSharp
+        m_MethodName: PalmClose
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDeactivate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 678487717}
+        m_TargetAssemblyTypeName: HammerMovement, Assembly-CSharp
+        m_MethodName: PalmOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Period: 0.1
+  HandModel: {fileID: 0}
+  Thumb: 1
+  Index: 1
+  Middle: 1
+  Ring: 1
+  Pinky: 1
+  MinimumExtendedCount: 1
+  MaximumExtendedCount: 0
+  ShowGizmos: 1
 --- !u!1 &692589810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,7 +1573,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11406422, guid: c8515ebee271c0649b9db1321f3026a4, type: 3}
   m_PrefabInstance: {fileID: 678487715}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 678487716}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ea79be653ce14db8969d7225d95ec6c, type: 3}
