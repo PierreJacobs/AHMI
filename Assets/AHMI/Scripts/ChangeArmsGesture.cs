@@ -2,9 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Leap.Unity.Attributes;
+using Leap.Unity;
 
 public class ChangeArmsGesture : Gesture
 {
+
+    float fElaspedTime;
+
+    public int xVelocity;
+    public float fRestTime;
+    RobotBehaviours RobotScript;
+
+
     protected new bool needLeftHand() {
         return true;
     }
@@ -18,12 +27,7 @@ public class ChangeArmsGesture : Gesture
     }
 
     protected new bool checkRightHand() {
-        if (fElaspedTime <= 0 && this.getRightHand().PalmNormal.x < -0.5) {
-            
-            
-        }
-
-        fElaspedTime -= Time.deltaTime;
+        return fElaspedTime <= 0 && this.getRightHand().PalmNormal.x < -0.5;  
     }
 
     protected override void processGestures() {
@@ -35,5 +39,6 @@ public class ChangeArmsGesture : Gesture
                 fElaspedTime = fRestTime;
                 RobotScript.TurnRight();
         }
+        fElaspedTime -= Time.deltaTime;
     }
 }
