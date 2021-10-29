@@ -12,11 +12,11 @@ public class RobotBehaviours : MonoBehaviour
 
     public Text tTextElement;
 
-    public int getArm() { return this.currentHandQuadrant < 0 ? this.currentHandQuadrant + 4 : this.currentHandQuadrant; }
+    public int getArm() { return this.currentHandQuadrant; }
 
     public void TurnRight() { this.currentHandQuadrant = (this.currentHandQuadrant+1) % 4; }
 
-    public void TurnLeft() { this.currentHandQuadrant = (this.currentHandQuadrant-1) % 4; }
+    public void TurnLeft() { this.currentHandQuadrant = (this.currentHandQuadrant+3) % 4; }
 
     public bool IsCurrentArm(Arms arm) { return (int) arm == this.getArm(); }
 
