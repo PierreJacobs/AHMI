@@ -42,8 +42,8 @@ public abstract class Gesture : MonoBehaviour
 
         if((!this.needLeftHand() || (this.getLeftHand() != null && this.checkLeftHand()))
          && (!this.needRightHand() || (this.getRightHand() != null && this.checkRightHand()))) {
-             this.processGestures();
-         }
+            this.processGestures();
+        }
         this.processOthers();
     }
 
@@ -61,13 +61,9 @@ public abstract class Gesture : MonoBehaviour
         }
     }
 
-    protected bool needLeftHand() {
-        return false;
-    }
+    protected abstract bool needLeftHand();
 
-    protected bool needRightHand() {
-        return false;
-    }
+    protected abstract bool needRightHand();
 
     protected bool checkLeftHand() {
         return true;

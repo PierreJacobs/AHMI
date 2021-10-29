@@ -13,11 +13,11 @@ public class ChangeArmsGesture : Gesture
     public float fRestTime;
 
 
-    protected new bool needLeftHand() {
+    protected override bool needLeftHand() {
         return true;
     }
 
-    protected new bool needRightHand() {
+    protected override bool needRightHand() {
         return true;
     }
 
