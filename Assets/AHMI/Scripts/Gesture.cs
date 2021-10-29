@@ -22,17 +22,9 @@ public abstract class Gesture : MonoBehaviour
         this.RobotScript = robotScript;
     }
 
-    protected RobotBehaviours GetRobot() {
-        return this.RobotScript;
-    }
-
-    protected Hand getLeftHand() {
-        return this.hLeftHand;
-    }
-
-    protected Hand getRightHand() {
-        return this.hRightHand;
-    }
+    protected RobotBehaviours GetRobot() { return this.RobotScript; }
+    protected Hand getLeftHand() { return this.hLeftHand; }
+    protected Hand getRightHand() { return this.hRightHand; }
 
     /**
     Test the gesture and process the result
@@ -40,7 +32,7 @@ public abstract class Gesture : MonoBehaviour
     public void testGesture() {
         this.updateHands();
         
-        if((!this.needLeftHand() || (this.getLeftHand() != null && this.checkLeftHand()))
+        if ((!this.needLeftHand() || (this.getLeftHand() != null && this.checkLeftHand()))
          && (!this.needRightHand() || (this.getRightHand() != null && this.checkRightHand()))) {
             this.processGestures();
         }
@@ -48,7 +40,6 @@ public abstract class Gesture : MonoBehaviour
     }
 
     protected abstract void processGestures();
-
     protected abstract void processOthers();
 
     private void updateHands() {
@@ -61,21 +52,10 @@ public abstract class Gesture : MonoBehaviour
         }
     }
 
-    protected virtual bool needLeftHand() {
-        return false;
-    }
-
-    protected virtual bool needRightHand() {
-        return false;
-    }
-
-    protected virtual bool checkLeftHand() {
-        return true;
-    }
-
-    protected virtual bool checkRightHand() {
-        return true;
-    }
+    protected virtual bool needLeftHand() { return false; }
+    protected virtual bool needRightHand() { return false; }
+    protected virtual bool checkLeftHand() { return true; }
+    protected virtual bool checkRightHand() { return true; }
 
     
     ///<summary>States

@@ -7,8 +7,8 @@ public class ProcessGestures : MonoBehaviour
 {
 
     public GameObject RigidRoundHand_L; // left hand gameobject
-
     public GameObject RigidRoundHand_R; // right hand gameobject
+    
     public Gesture[] gestures;
     // Start is called before the first frame update
 
