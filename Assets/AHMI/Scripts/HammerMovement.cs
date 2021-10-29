@@ -13,8 +13,12 @@ public class HammerMovement : MonoBehaviour
     public float fRestTime;
     float fElaspedTime;
     Controller controller;
+
     public GameObject RigidRoundHand_L;
     PalmsOrientation PalmsOrientationScript;
+
+    public GameObject Robot;
+    RobotBehaviours RobotScript;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +28,7 @@ public class HammerMovement : MonoBehaviour
 
         controller = new Controller();
         this.PalmsOrientationScript = RigidRoundHand_L.GetComponent<PalmsOrientation>();
+        this.RobotScript = Robot.GetComponent<RobotBehaviours>();
     }
 
     // Update is called once per frame
@@ -37,8 +42,7 @@ public class HammerMovement : MonoBehaviour
             foreach (Hand hand in hands) if (hand.IsRight) hRightHand = hand;
         }
 
-        // TODO: Vérifier que le bras sélectionné est bien Arm.Hammer
-        if (hRightHand != null && !PalmsOrientationScript.IsLeftPalmUp() && fElaspedTime <= 0 && this.bIsRightHandClose) {
+        if (RobotScript.IsCurrentArm(RobotBehaviours.Arms.Hammer) && hRightHand != null && !PalmsOrientationScript.IsLeftPalmUp() && fElaspedTime <= 0 && this.bIsRightHandClose) {
             if (hRightHand.PalmVelocity.y < -yVelocity && !this.bIsRightHandDown) {
                 //TODO: make hammer go down
                 print("Hammer goes down");

@@ -7,20 +7,18 @@ using System;
 public class RobotBehaviours : MonoBehaviour
 {
 
-    enum Arms : ushort { Hammer, Unused, Clamp, Welder }
+    public enum Arms { Hammer, Unused, Clamp, Welder }
     public int currentHandQuadrant = 0;
 
     public Text tTextElement;
 
-    public int getHand() { 
-        int mod = 0;
-        if (this.currentHandQuadrant < 0) mod = 4; 
-        return this.currentHandQuadrant + mod; 
-    }
+    public int getArm() { return this.currentHandQuadrant < 0 ? this.currentHandQuadrant + 4 : this.currentHandQuadrant; }
 
     public void TurnRight() { this.currentHandQuadrant = (this.currentHandQuadrant+1) % 4; }
 
     public void TurnLeft() { this.currentHandQuadrant = (this.currentHandQuadrant-1) % 4; }
+
+    public bool IsCurrentArm(Arms arm) { return (int) arm == this.getArm(); }
 
     public GameObject circleObject;
     public float RotationSpeed;
@@ -34,7 +32,7 @@ public class RobotBehaviours : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tTextElement.text = "Arm: " + Enum.GetName(typeof(Arms), getHand());
+        tTextElement.text = "Arm: " + Enum.GetName(typeof(Arms), getArm());
         circleObject.transform.rotation = Quaternion.Slerp(circleObject.transform.rotation, Quaternion.Euler(0, this.currentHandQuadrant*90, 0), Time.deltaTime * RotationSpeed);
     }
 }
