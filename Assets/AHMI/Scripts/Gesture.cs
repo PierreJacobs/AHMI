@@ -39,7 +39,7 @@ public abstract class Gesture : MonoBehaviour
     */
     public void testGesture() {
         this.updateHands();
-
+        
         if((!this.needLeftHand() || (this.getLeftHand() != null && this.checkLeftHand()))
          && (!this.needRightHand() || (this.getRightHand() != null && this.checkRightHand()))) {
             this.processGestures();
@@ -61,15 +61,19 @@ public abstract class Gesture : MonoBehaviour
         }
     }
 
-    protected abstract bool needLeftHand();
+    protected virtual bool needLeftHand() {
+        return false;
+    }
 
-    protected abstract bool needRightHand();
+    protected virtual bool needRightHand() {
+        return false;
+    }
 
-    protected bool checkLeftHand() {
+    protected virtual bool checkLeftHand() {
         return true;
     }
 
-    protected bool checkRightHand() {
+    protected virtual bool checkRightHand() {
         return true;
     }
 

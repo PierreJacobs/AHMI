@@ -21,12 +21,12 @@ public class ChangeArmsGesture : Gesture
         return true;
     }
 
-    protected new bool checkLeftHand() {
+    protected override bool checkLeftHand() {
         return this.checkExtendedFingers(this.getLeftHand(), PointingState.Extended, PointingState.Extended, PointingState.Extended, PointingState.Extended, PointingState.Extended) && this.getLeftHand().PalmNormal.y > 0;
     }
 
-    protected new bool checkRightHand() {
-        return /* fElaspedTime <= 0 && */ this.getRightHand().PalmNormal.x < -0.5;  
+    protected override bool checkRightHand() {
+        return fElaspedTime <= 0 && this.getRightHand().PalmNormal.x < -0.5;  
     }
 
     protected override void processGestures() {
@@ -40,7 +40,7 @@ public class ChangeArmsGesture : Gesture
         */
 
         //Ce que je rajoute: (avec ça ça devrait marcher normalement)
-        if (!this.checkLeftHand() || !this.checkRightHand() || this.fElaspedTime > 0) return;
+        //if (!this.checkLeftHand() || !this.checkRightHand() || this.fElaspedTime > 0) return;
 
         if (this.getRightHand().PalmVelocity.x < -xVelocity) { 
                 fElaspedTime = fRestTime;
