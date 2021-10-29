@@ -1497,7 +1497,7 @@ MonoBehaviour:
   yVelocity: 800
   fRestTime: 0.2
   RigidRoundHand_L: {fileID: 463762194}
-  Robot: {fileID: 0}
+  Robot: {fileID: 7686185091571408044}
 --- !u!114 &678487718
 MonoBehaviour:
   m_ObjectHideFlags: 0
