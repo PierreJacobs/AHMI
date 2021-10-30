@@ -642,7 +642,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yVelocity: 800
-  fRestTime: 0.2
 --- !u!114 &491296584
 MonoBehaviour:
   m_ObjectHideFlags: 0
