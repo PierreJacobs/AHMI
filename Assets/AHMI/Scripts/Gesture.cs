@@ -14,17 +14,21 @@ public abstract class Gesture : MonoBehaviour
     private Hand hLeftHand; // left hand (detection)
     private Hand hRightHand; // right hand (detection)
     private RobotBehaviours RobotScript;
+    private Animator anim;
     
-    public void startSetup(GameObject left, GameObject right, Controller controller, RobotBehaviours robotScript) {
+    public void startSetup(GameObject left, GameObject right, Controller controller, RobotBehaviours robotScript, Animator anim) {
         this.RigidRoundHand_L = left;
         this.RigidRoundHand_R = right;
         this.controller = controller;
         this.RobotScript = robotScript;
+        this.anim = anim;
     }
 
     protected RobotBehaviours GetRobot() { return this.RobotScript; }
     protected Hand getLeftHand() { return this.hLeftHand; }
     protected Hand getRightHand() { return this.hRightHand; }
+
+    protected Animator getAnimator() { return this.anim; }
 
     /**
     Test the gesture and process the result

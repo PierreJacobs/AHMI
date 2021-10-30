@@ -335,7 +335,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189505641}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e67dc32db0716c1488cd1cf5fb49393d, type: 3}
   m_Controller: {fileID: 9100000, guid: ca569dd510dcf5142929444f7fe6c009, type: 2}
   m_CullingMode: 0
@@ -614,6 +614,7 @@ MonoBehaviour:
   - {fileID: 491296583}
   - {fileID: 491296584}
   Robot: {fileID: 7686185091571408044}
+  animator: {fileID: 189505643}
 --- !u!4 &491296582
 Transform:
   m_ObjectHideFlags: 0
@@ -8413,6 +8414,14 @@ PrefabInstance:
     - target: {fileID: 4963181288806646101, guid: 3c3befa7840f9ad4c86db80c6636b413, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.35760498
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963181288806646101, guid: 3c3befa7840f9ad4c86db80c6636b413, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963181288806646101, guid: 3c3befa7840f9ad4c86db80c6636b413, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4963181288806646101, guid: 3c3befa7840f9ad4c86db80c6636b413, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
