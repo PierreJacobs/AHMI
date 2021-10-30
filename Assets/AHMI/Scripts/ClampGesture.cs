@@ -4,7 +4,6 @@ using UnityEngine;
 using Leap;
 using Leap.Unity;
 using Leap.Unity.Attributes;
-using UnityEngine.Serialization;
 using System.Linq;
 
 public class ClampGesture : Gesture
