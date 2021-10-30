@@ -22,13 +22,13 @@ public class HammerGesture : Gesture
         if (this.getRightHand().PalmVelocity.y < -yVelocity && !this.bIsRightHandDown) { 
                 //TODO: make hammer go down
                 print("Hammer goes down");
-                this.getAnimator().SetTrigger("Active Hammer");
+                this.getAnimator().Play("Hammer Down");
                 this.bIsRightHandDown = true;
         }
         else if (this.getRightHand().PalmVelocity.y > (yVelocity/2) && this.bIsRightHandDown) {
                 //TODO: make hammer go up
                 print("Hammer goes up");
-                this.getAnimator().SetTrigger("Disable Hammer");
+                this.getAnimator().Play("Hammer Up");
                 this.bIsRightHandDown = false;
         }
         
