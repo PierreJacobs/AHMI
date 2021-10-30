@@ -469,7 +469,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.2
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 491296581}
   - component: {fileID: 491296580}
   - component: {fileID: 491296583}
+  - component: {fileID: 491296584}
   m_Layer: 0
   m_Name: GesturesController
   m_TagString: Untagged
@@ -611,6 +612,7 @@ MonoBehaviour:
   gestures:
   - {fileID: 491296580}
   - {fileID: 491296583}
+  - {fileID: 491296584}
   Robot: {fileID: 7686185091571408044}
 --- !u!4 &491296582
 Transform:
@@ -640,6 +642,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yVelocity: 800
   fRestTime: 0.2
+--- !u!114 &491296584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491296579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240d6b9c1c0af894596d28c09a781f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fActivateDistance: 35
+  fDeactivateDistance: 45
 --- !u!1001 &496194602
 PrefabInstance:
   m_ObjectHideFlags: 0
