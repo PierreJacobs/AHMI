@@ -6,16 +6,14 @@ using Leap.Unity;
 
 public class HammerGesture : Gesture
 {
-    float fElaspedTime;
     bool bIsRightHandDown;
 
     public int yVelocity;
-    public float fRestTime;
 
     protected override bool needLeftHand() { return true; }
     protected override bool needRightHand() { return true; }
     protected override bool checkLeftHand() { return this.getLeftHand().PalmNormal.y < 0; }
-    protected override bool checkRightHand() { return fElaspedTime <= 0 && this.checkExtendedFingers(this.getRightHand(), PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended); }
+    protected override bool checkRightHand() { return this.checkExtendedFingers(this.getRightHand(), PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended); }
 
     protected override void processGestures() {
 
@@ -38,6 +36,6 @@ public class HammerGesture : Gesture
         
     }
 
-    protected override void processOthers() { fElaspedTime -= Time.deltaTime; }
+    protected override void processOthers() { return; }
 
 }

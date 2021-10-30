@@ -657,6 +657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fActivateDistance: 35
   fDeactivateDistance: 45
+  fIMRPDistance: 40
 --- !u!1001 &496194602
 PrefabInstance:
   m_ObjectHideFlags: 0
