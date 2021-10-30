@@ -5,6 +5,7 @@ using Leap;
 using Leap.Unity;
 using Leap.Unity.Attributes;
 using UnityEngine.Serialization;
+using System.Linq;
 
 public class ClampGesture : Gesture
 {
@@ -14,6 +15,9 @@ public class ClampGesture : Gesture
 
     [Units("Unity Game Unit")]
     public float fDeactivateDistance;
+
+    [Units("Unity Game Unit")]
+    public float fIMRPDistance;
 
     bool bIsPinched;
 
@@ -41,9 +45,7 @@ public class ClampGesture : Gesture
     protected override void processGestures() {
         if (!this.GetRobot().IsCurrentArm(RobotBehaviours.Arms.Clamp)) return;
         
-        foreach(float dis in GetIMRPDistance(this.getRightHand())) print(dis);
-
-        if (!bIsPinched && this.GetThumbIndexDistance(this.getRightHand()) < fActivateDistance) {
+        if (!bIsPinched && this.GetThumbIndexDistance(this.getRightHand()) < fActivateDistance && GetIMRPDistance(this.getRightHand()).All(x => x < this.fIMRPDistance)) {
             // TODO: Close the claw
             print("Claw closes");
             bIsPinched = true;
