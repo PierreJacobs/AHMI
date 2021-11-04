@@ -7,7 +7,7 @@ using System;
 public class RobotBehaviours : MonoBehaviour
 {
 
-    public enum Arms { Hammer, Unused, Clamp, Welder }
+    public enum Arms { Clamp, Welder, Hammer, Unused }
     public int currentHandQuadrant = 0;
 
     public Text tTextElement;
@@ -23,16 +23,20 @@ public class RobotBehaviours : MonoBehaviour
     public GameObject circleObject;
     public float RotationSpeed;
 
+    public Quaternion robotRotation;
+    public float robotRotationSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        robotRotation = this.transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
         tTextElement.text = "Arm: " + Enum.GetName(typeof(Arms), getArm());
-        circleObject.transform.rotation = Quaternion.Slerp(circleObject.transform.rotation, Quaternion.Euler(0, this.currentHandQuadrant*90, 0), Time.deltaTime * RotationSpeed);
+        circleObject.transform.localRotation  = Quaternion.Slerp(circleObject.transform.localRotation , Quaternion.Euler(0, this.currentHandQuadrant*90, 0), Time.deltaTime * RotationSpeed);
+        transform.rotation = Quaternion.Slerp(transform.rotation, this.robotRotation, Time.deltaTime * robotRotationSpeed);
     }
 }
