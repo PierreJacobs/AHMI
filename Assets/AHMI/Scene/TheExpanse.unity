@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 491296583}
   - component: {fileID: 491296584}
   - component: {fileID: 491296585}
+  - component: {fileID: 491296586}
   m_Layer: 0
   m_Name: GesturesController
   m_TagString: Untagged
@@ -615,6 +616,7 @@ MonoBehaviour:
   - {fileID: 491296583}
   - {fileID: 491296584}
   - {fileID: 491296585}
+  - {fileID: 491296586}
   Robot: {fileID: 7686185091571408044}
   animator: {fileID: 189505643}
 --- !u!4 &491296582
@@ -674,6 +676,18 @@ MonoBehaviour:
   point: {fileID: 1305418461}
   minRadius: 0.15
   maxRadius: 0.2
+--- !u!114 &491296586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491296579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5542e1c3de49fca40863c7aac6ac14f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &496194602
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8835,5 +8849,5 @@ MonoBehaviour:
   tTextElement: {fileID: 1292678223}
   circleObject: {fileID: 3383462597539544877}
   RotationSpeed: 1.5
-  robotRotation: {x: 0, y: 0, z: 0, w: 0}
-  robotRotationSpeed: 0
+  robotRotationSpeed: 0.5
+  movementSpeed: 0.5

@@ -18,7 +18,7 @@ public class RotationGesture : Gesture
 
     protected override void processGestures() {
         Vector3 rotationVector = unityVector(this.getRightHand().PalmPosition) - point.transform.position;
-        this.GetRobot().robotRotation *= Quaternion.Euler(rotationVector*0.2f);   
+        this.GetRobot().Rotate(Quaternion.Euler(rotationVector));   
     }
 
     protected override void processOthers() { return; }

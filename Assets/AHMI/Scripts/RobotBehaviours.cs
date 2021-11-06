@@ -23,13 +23,13 @@ public class RobotBehaviours : MonoBehaviour
     public GameObject circleObject;
     public float RotationSpeed;
 
-    public Quaternion robotRotation;
     public float robotRotationSpeed;
+
+    public float movementSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
-        robotRotation = this.transform.rotation;
     }
 
     // Update is called once per frame
@@ -37,6 +37,14 @@ public class RobotBehaviours : MonoBehaviour
     {
         tTextElement.text = "Arm: " + Enum.GetName(typeof(Arms), getArm());
         circleObject.transform.localRotation  = Quaternion.Slerp(circleObject.transform.localRotation , Quaternion.Euler(0, this.currentHandQuadrant*90, 0), Time.deltaTime * RotationSpeed);
-        transform.rotation = Quaternion.Slerp(transform.rotation, this.robotRotation, Time.deltaTime * robotRotationSpeed);
+        
+    }
+
+    public void Rotate(Quaternion rotation) {
+        transform.rotation = Quaternion.Slerp(transform.rotation, transform.rotation * rotation, Time.deltaTime * robotRotationSpeed);
+    }
+
+    public void Move(Vector3 direction) {
+        transform.localPosition = Vector3.Slerp(transform.position, transform.position + direction, Time.deltaTime * movementSpeed);
     }
 }
