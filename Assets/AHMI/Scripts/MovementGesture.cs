@@ -18,7 +18,6 @@ public class MovementGesture : Gesture
     }
 
     protected override void processGestures() {
-        print(this.getLeftHand().PalmVelocity);
         Vector3 movementVector = new Vector3(-this.getLeftHand().PalmNormal.z , 0.0f, -this.getLeftHand().PalmNormal.x);
         this.GetRobot().Move(movementVector);   
     }

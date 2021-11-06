@@ -88,6 +88,7 @@ public abstract class Gesture : MonoBehaviour
 
     // Checks that the palm is not moving to fast (to diffentiate this gesture with other gestures)
     protected bool isSlower3D(Vector vector, float fMaxVelocity) { return (Math.Abs(vector.x) < fMaxVelocity) && (Math.Abs(vector.y) < fMaxVelocity) && (Math.Abs(vector.z) < fMaxVelocity); }
-    
 
+    protected bool IsHandClosed(Hand hand) { return this.checkExtendedFingers(this.getRightHand(), PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended); }
+    
 }
