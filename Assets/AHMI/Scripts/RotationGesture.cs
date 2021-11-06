@@ -12,14 +12,10 @@ public class RotationGesture : Gesture
     public Vector vIdlingArea = new Vector(0.3f, 0.3f, 0);
     public float fYIdlingOffset = -0.2f; // Finger is naturally pointing down
 
-    float fElaspedTime;
-    public float fRestTime;
-
     protected override bool needLeftHand() { return false; }
     protected override bool needRightHand() { return true; }
     protected override bool checkRightHand() { 
-        return fElaspedTime < 0 
-        && this.checkExtendedFingers(this.getRightHand(), PointingState.Extended, PointingState.Extended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended) 
+        return this.checkExtendedFingers(this.getRightHand(), PointingState.Extended, PointingState.Extended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended) 
         && this.isSlower3D(this.getRightHand().PalmVelocity, this.fMaxPalmVelocity); 
     }
 
@@ -42,8 +38,6 @@ public class RotationGesture : Gesture
                 Hence the weird-looking function call
             */
             this.GetRobot().Rotate(Quaternion.Euler(0, xAngle, -yAngle));
-
-            fElaspedTime = fRestTime;
         }
 
     }
@@ -60,18 +54,14 @@ public class RotationGesture : Gesture
         return (Math.Abs(yAngle) < fErrorAngle) ? 0f: yAngle;
     }
 
-    protected override void processOthers() { fElaspedTime -= Time.deltaTime; }
+    protected override void processOthers() { return; }
 
-    // Checks that the palm is not moving to fast (to diffentiate this gesture with other gestures)
-    private bool isSlower3D(Vector vector, float fMaxVelocity) { return (Math.Abs(vector.x) < fMaxVelocity) && (Math.Abs(vector.y) < fMaxVelocity) && (Math.Abs(vector.z) < fMaxVelocity); }
-    
     // Function to handle index naturally pointing down position
     private float OffsetYPosition(float y) { return y - this.fYIdlingOffset; }
     
     // A little zone where the index points, in which nothing happens => idling
     private bool isIdlingArea(Vector vector) { return Math.Abs(vector.x) < vIdlingArea.x && Math.Abs(this.OffsetYPosition(vector.y)) < vIdlingArea.y; }
 
-    private Vector3 unityVector(Leap.Vector vector) { return new Vector3(vector.x, vector.y, vector.z); } 
     private float radToDeg(float rad) { return rad * (180 / (float) Math.PI); }
 
 }

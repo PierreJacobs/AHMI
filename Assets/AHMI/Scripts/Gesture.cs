@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -82,5 +83,11 @@ public abstract class Gesture : MonoBehaviour
              (requiredState == PointingState.Extended && finger.IsExtended) ||
              (requiredState == PointingState.NotExtended && !finger.IsExtended);
     }
+
+    protected Vector3 unityVector(Leap.Vector vector) { return new Vector3(vector.x, vector.y, vector.z); } 
+
+    // Checks that the palm is not moving to fast (to diffentiate this gesture with other gestures)
+    protected bool isSlower3D(Vector vector, float fMaxVelocity) { return (Math.Abs(vector.x) < fMaxVelocity) && (Math.Abs(vector.y) < fMaxVelocity) && (Math.Abs(vector.z) < fMaxVelocity); }
+    
 
 }

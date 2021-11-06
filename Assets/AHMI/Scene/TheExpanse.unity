@@ -674,13 +674,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fErrorAngle: 10
-  fMaxPalmVelocity: 200
+  fMaxPalmVelocity: 50
   vIdlingArea:
     x: 0.3
     y: 0.3
     z: 0
   fYIdlingOffset: -0.2
-  fRestTime: 0
 --- !u!114 &491296586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,6 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5542e1c3de49fca40863c7aac6ac14f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fMaxPalmVelocity: 30
 --- !u!1001 &496194602
 PrefabInstance:
   m_ObjectHideFlags: 0
