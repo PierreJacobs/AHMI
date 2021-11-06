@@ -20,13 +20,11 @@ public class HammerGesture : Gesture
         if (!this.GetRobot().IsCurrentArm(RobotBehaviours.Arms.Hammer)) return;
 
         if (this.getRightHand().PalmVelocity.y < -yVelocity && !this.bIsRightHandDown) { 
-                //TODO: make hammer go down
                 print("Hammer goes down");
                 this.getAnimator().Play("Hammer Down");
                 this.bIsRightHandDown = true;
         }
         else if (this.getRightHand().PalmVelocity.y > (yVelocity/2) && this.bIsRightHandDown) {
-                //TODO: make hammer go up
                 print("Hammer goes up");
                 this.getAnimator().Play("Hammer Up");
                 this.bIsRightHandDown = false;
