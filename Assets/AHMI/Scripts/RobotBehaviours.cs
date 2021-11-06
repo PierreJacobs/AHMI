@@ -45,6 +45,6 @@ public class RobotBehaviours : MonoBehaviour
     }
 
     public void Move(Vector3 direction) {
-        transform.localPosition = Vector3.Slerp(transform.position, transform.position + direction, Time.deltaTime * movementSpeed);
+        this.transform.Translate(Vector3.Slerp(Vector3.zero, direction, Time.deltaTime * movementSpeed), relativeTo:Space.Self);
     }
 }
