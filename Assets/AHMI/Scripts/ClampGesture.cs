@@ -22,16 +22,21 @@ public class ClampGesture : Gesture
 
     protected override bool needLeftHand() { return true; }
     protected override bool needRightHand() { return true; }
-    protected override bool checkLeftHand() { return this.getLeftHand().PalmNormal.y < 0; }
+    protected override bool checkLeftHand() { return this.hLeftHand.PalmNormal.y < 0; }
     protected override bool checkRightHand() { return true; }
 
-
+    ///<summary>
+    /// Computes the distance between the thumb and the index of the given hand
+    ///</summary>
     private float GetThumbIndexDistance(Hand hand) {
       Vector3 thumbTipPosition = hand.GetThumb().TipPosition.ToVector3();
       Vector3 indexTipPosition = hand.GetIndex().TipPosition.ToVector3();
       return Vector3.Distance(indexTipPosition, thumbTipPosition);
     }
 
+    ///<summary>
+    /// Computes the distance between the index and the middle finger, between the middle finger and the ring finger, between the ring finger and the pinky if the given hand
+    ///</summary>
     private List<float> GetIMRPDistance(Hand hand) {
         Vector3 indexTipPosition = hand.GetIndex().TipPosition.ToVector3();
         Vector3 middleTipPosition = hand.GetMiddle().TipPosition.ToVector3();
@@ -42,15 +47,13 @@ public class ClampGesture : Gesture
     }
 
     protected override void processGestures() {
-        if (!this.GetRobot().IsCurrentArm(RobotBehaviours.Arms.Clamp)) return;
+        if (!this.Robot.IsCurrentArm(RobotBehaviours.Arms.Clamp)) return;
         
-        if (!bIsPinched && this.GetThumbIndexDistance(this.getRightHand()) < fActivateDistance && GetIMRPDistance(this.getRightHand()).All(x => x < this.fIMRPDistance)) {
-            // TODO: Close the claw
+        if (!bIsPinched && this.GetThumbIndexDistance(this.hRightHand) < fActivateDistance && GetIMRPDistance(this.hRightHand).All(x => x < this.fIMRPDistance)) {
             print("Claw closes");
             bIsPinched = true;
         }
-        else if (bIsPinched && this.GetThumbIndexDistance(this.getRightHand()) > fDeactivateDistance) {
-            // TODO: Open the claw
+        else if (bIsPinched && this.GetThumbIndexDistance(this.hRightHand) > fDeactivateDistance) {
             print("Clawn opens");
             bIsPinched = false;
         }

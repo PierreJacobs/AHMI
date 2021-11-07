@@ -10,26 +10,19 @@ public class ProcessGestures : MonoBehaviour
     public GameObject RigidRoundHand_R; // right hand gameobject
     
     public Gesture[] gestures;
-    // Start is called before the first frame update
 
     private Controller controller;
     public GameObject Robot;
     
     public Animator animator;
 
+    // Start is called before the first frame update
     void Start()
     {
         this.controller = new Controller();
-        foreach(Gesture gesture in gestures) {
-            gesture.startSetup(this.RigidRoundHand_L, this.RigidRoundHand_R, this.controller, Robot.GetComponent<RobotBehaviours>(), animator);
-        }
+        foreach(Gesture gesture in gestures) gesture.startSetup(this.RigidRoundHand_L, this.RigidRoundHand_R, this.controller, Robot.GetComponent<RobotBehaviours>(), animator);
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        foreach(Gesture gesture in gestures) {
-            gesture.testGesture();
-        }
-    }
+    void Update() { foreach(Gesture gesture in gestures) gesture.testGesture(); }
 }

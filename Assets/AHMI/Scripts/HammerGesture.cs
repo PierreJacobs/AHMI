@@ -12,21 +12,21 @@ public class HammerGesture : Gesture
 
     protected override bool needLeftHand() { return true; }
     protected override bool needRightHand() { return true; }
-    protected override bool checkLeftHand() { return this.getLeftHand().PalmNormal.y < 0; }
-    protected override bool checkRightHand() { return this.IsHandClosed(this.getRightHand()); }
+    protected override bool checkLeftHand() { return this.hLeftHand.PalmNormal.y < 0; }
+    protected override bool checkRightHand() { return this.IsHandClosed(this.hRightHand); }
 
     protected override void processGestures() {
 
-        if (!this.GetRobot().IsCurrentArm(RobotBehaviours.Arms.Hammer)) return;
+        if (!this.Robot.IsCurrentArm(RobotBehaviours.Arms.Hammer)) return;
 
-        if (this.getRightHand().PalmVelocity.y < -yVelocity && !this.bIsRightHandDown) { 
+        if (this.hRightHand.PalmVelocity.y < -yVelocity && !this.bIsRightHandDown) { 
                 print("Hammer goes down");
-                this.getAnimator().Play("Hammer Down");
+                this.Animator.Play("Hammer Down");
                 this.bIsRightHandDown = true;
         }
-        else if (this.getRightHand().PalmVelocity.y > (yVelocity/2) && this.bIsRightHandDown) {
+        else if (this.hRightHand.PalmVelocity.y > (yVelocity/2) && this.bIsRightHandDown) {
                 print("Hammer goes up");
-                this.getAnimator().Play("Hammer Up");
+                this.Animator.Play("Hammer Up");
                 this.bIsRightHandDown = false;
         }
         

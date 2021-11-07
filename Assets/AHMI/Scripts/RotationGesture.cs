@@ -15,13 +15,13 @@ public class RotationGesture : Gesture
     protected override bool needLeftHand() { return false; }
     protected override bool needRightHand() { return true; }
     protected override bool checkRightHand() { 
-        return this.checkExtendedFingers(this.getRightHand(), PointingState.Extended, PointingState.Extended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended) 
-        && this.isSlower3D(this.getRightHand().PalmVelocity, this.fMaxPalmVelocity); 
+        return this.checkExtendedFingers(this.hRightHand, PointingState.Extended, PointingState.Extended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended) 
+        && this.isSlower3D(this.hRightHand.PalmVelocity, this.fMaxPalmVelocity); 
     }
 
     protected override void processGestures() {
         
-        Vector vIndexDirection = this.getRightHand().Fingers[1].Direction;
+        Vector vIndexDirection = this.hRightHand.Fingers[1].Direction;
 
         if (!this.isIdlingArea(vIndexDirection)) {
             float xAngle = computeXAngle(vIndexDirection);
@@ -37,17 +37,25 @@ public class RotationGesture : Gesture
 
                 Hence the weird-looking function call
             */
-            this.GetRobot().Rotate(Quaternion.Euler(0, xAngle, -yAngle));
+            this.Robot.Rotate(Quaternion.Euler(0, xAngle, -yAngle));
         }
 
     }
 
+    ///<summary>
+    /// Computes the X agnle of the current index (finger) position from a direction vector
+    /// The referential is a pointing index, pointing forward. If the finger goes the the right, the X angle is positive, else it is negative
+    ///</summary>
     private float computeXAngle(Vector vIndexDirection) { 
         int xAngleSign = vIndexDirection.x < 0 ? -1: 1;
         float xAngle = this.radToDeg((float) Math.Asin(Math.Abs(vIndexDirection.x))) * xAngleSign;
         return (Math.Abs(xAngle) < fErrorAngle) ? 0f : xAngle;
     }
 
+    ///<summary>
+    /// Computes the Y agnle of the current index (finger) position from a direction vector
+    /// The referential is a pointing index, pointing forward. If the finger goes up, the Y angle is positive, else it is negative
+    ///</summary>
     private float computeYAngle(Vector vIndexDirection) {
         int yAngleSign = this.OffsetYPosition(vIndexDirection.y) < 0 ? -1 : 1; 
         float yAngle = this.radToDeg((float) Math.Asin(Math.Abs(this.OffsetYPosition(vIndexDirection.y)))) * yAngleSign;
@@ -55,13 +63,20 @@ public class RotationGesture : Gesture
     }
 
     protected override void processOthers() { return; }
-
-    // Function to handle index naturally pointing down position
+    
+    ///<summary>
+    /// handles the index naturally pointing down position
+    ///</summary>
     private float OffsetYPosition(float y) { return y - this.fYIdlingOffset; }
     
-    // A little zone where the index points, in which nothing happens => idling
+    ///<summary>
+    /// Computes a little zone where the index points, in which nothing happens => idling
+    ///</summary>
     private bool isIdlingArea(Vector vector) { return Math.Abs(vector.x) < vIdlingArea.x && Math.Abs(this.OffsetYPosition(vector.y)) < vIdlingArea.y; }
 
+    ///<summary>
+    /// Converts an rad angle to degrees
+    ///</summary>
     private float radToDeg(float rad) { return rad * (180 / (float) Math.PI); }
 
 }

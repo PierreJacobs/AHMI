@@ -13907,6 +13907,6 @@ MonoBehaviour:
   currentHandQuadrant: 0
   tTextElement: {fileID: 1292678223}
   circleObject: {fileID: 3383462597539544877}
-  RotationSpeed: 1.5
+  armRotationSpeed: 3
   robotRotationSpeed: 1.5
   movementSpeed: 25

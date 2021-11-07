@@ -10,28 +10,27 @@ public class WelderGesture : Gesture
 
     protected override bool needLeftHand() { return true; }
     protected override bool needRightHand() { return true; }
-    protected override bool checkLeftHand() { return this.getLeftHand().PalmNormal.y < 0; }
+    protected override bool checkLeftHand() { return this.hLeftHand.PalmNormal.y < 0; }
     protected override bool checkRightHand() { return true; }
 
     protected override void processGestures() {
 
-        if (!this.GetRobot().IsCurrentArm(RobotBehaviours.Arms.Welder)) return;
+        if (!this.Robot.IsCurrentArm(RobotBehaviours.Arms.Welder)) return;
 
-        if (!bIsHandClosed && this.IsHandClosed(this.getRightHand())) {
+        if (!bIsHandClosed && this.IsHandClosed(this.hRightHand)) {
             bIsHandClosed = true;
             print("FIRING");
-            this.getAnimator().Play("Fire Welder");
-            this.getAnimator().Play("SetFire");
+            this.Animator.Play("Fire Welder");
+            this.Animator.Play("SetFire");
             
         }
 
-        else if (bIsHandClosed && !this.IsHandClosed(this.getRightHand())) {
+        else if (bIsHandClosed && !this.IsHandClosed(this.hRightHand)) {
             bIsHandClosed = false;
             print("NOT FIRING");
-            this.getAnimator().Play("UnsetFire");
-            this.getAnimator().Play("Unfire Welder");
+            this.Animator.Play("UnsetFire");
+            this.Animator.Play("Unfire Welder");
         }
-
 
     }
 
