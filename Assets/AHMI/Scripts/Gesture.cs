@@ -101,7 +101,7 @@ public abstract class Gesture : MonoBehaviour
     /// Checks whether all the fingers on a given hand match the desired states.
     /// Available states: <c>PointingState.Either</c> | <c>PointingState.Extended</c> | <c>PointingState.NotExtended</c>
     ///</summary>
-    public bool checkExtendedFingers(Hand hand, PointingState Thumb, PointingState Index, PointingState Middle, PointingState Ring, PointingState Pinky) {
+    protected bool checkMatchFingers(Hand hand, PointingState Thumb, PointingState Index, PointingState Middle, PointingState Ring, PointingState Pinky) {
         return matchFingerState(hand.Fingers[0], Thumb)
             && matchFingerState(hand.Fingers[1], Index)
             && matchFingerState(hand.Fingers[2], Middle)
@@ -133,6 +133,6 @@ public abstract class Gesture : MonoBehaviour
     ///<summary>
     /// Checks if the given hand is closed
     ///</summary>
-    protected bool IsHandClosed(Hand hand) { return this.checkExtendedFingers(hand, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended); }
+    protected bool IsHandClosed(Hand hand) { return this.checkMatchFingers(hand, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended); }
     
 }

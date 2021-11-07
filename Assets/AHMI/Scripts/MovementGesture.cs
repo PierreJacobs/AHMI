@@ -14,7 +14,7 @@ public class MovementGesture : Gesture
     protected override bool checkLeftHand() { 
         return this.isSlower3D(this.hLeftHand.PalmVelocity, this.fMaxPalmVelocity)
         && this.hLeftHand.PalmNormal.y < -0.4f && this.hLeftHand.PalmNormal.y > -0.9f
-        && this.checkExtendedFingers(this.hLeftHand, PointingState.Extended, PointingState.Extended, PointingState.Extended, PointingState.Extended, PointingState.Extended);
+        && this.checkMatchFingers(this.hLeftHand, PointingState.Extended, PointingState.Extended, PointingState.Extended, PointingState.Extended, PointingState.Extended);
     }
 
     protected override void processGestures() {

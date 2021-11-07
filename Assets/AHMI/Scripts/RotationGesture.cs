@@ -15,7 +15,7 @@ public class RotationGesture : Gesture
     protected override bool needLeftHand() { return false; }
     protected override bool needRightHand() { return true; }
     protected override bool checkRightHand() { 
-        return this.checkExtendedFingers(this.hRightHand, PointingState.Extended, PointingState.Extended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended) 
+        return this.checkMatchFingers(this.hRightHand, PointingState.Extended, PointingState.Extended, PointingState.NotExtended, PointingState.NotExtended, PointingState.NotExtended) 
         && this.isSlower3D(this.hRightHand.PalmVelocity, this.fMaxPalmVelocity); 
     }
 
