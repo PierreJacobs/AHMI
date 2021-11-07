@@ -21,14 +21,14 @@ public class WelderGesture : Gesture
             bIsHandClosed = true;
             print("FIRING");
             this.Animator.Play("Fire Welder");
-            this.Animator.Play("SetFire");
+            //this.Animator.Play("SetFire");
             
         }
 
         else if (bIsHandClosed && !this.IsHandClosed(this.hRightHand)) {
             bIsHandClosed = false;
             print("NOT FIRING");
-            this.Animator.Play("UnsetFire");
+            //this.Animator.Play("UnsetFire");
             this.Animator.Play("Unfire Welder");
         }
 
