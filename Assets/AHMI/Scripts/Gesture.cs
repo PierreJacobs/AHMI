@@ -25,6 +25,8 @@ public abstract class Gesture : MonoBehaviour
     protected Hand hRightHand { get; private set; }         // right hand (on controller detection)
     protected RobotBehaviours Robot { get; private set; }   // robot script to control movement and rotation
     protected Animator Animator { get; private set; }       // animator to play animations on screen
+
+    protected bool bIsRightHanded;                          // Left-Handed or Right-Handed
     
     ///<summary>
     /// Setup function, similar to a constructor
@@ -35,6 +37,7 @@ public abstract class Gesture : MonoBehaviour
         this.controller = controller;
         this.Robot = robotScript;
         this.Animator = anim;
+        this.bIsRightHanded = ChosenHand.righthand;
     }
 
     ///<summary>
@@ -71,11 +74,8 @@ public abstract class Gesture : MonoBehaviour
         if (fFrame.Hands.Count > 0){
             List<Hand> hands = fFrame.Hands;
             foreach (Hand hand in hands) 
-                if ((hand.IsRight && ChosenHand.righthand) || (hand.IsLeft && !ChosenHand.righthand)) {
-                    hRightHand = hand;
-                } else{
-                    hLeftHand = hand;
-                } 
+                if ((hand.IsRight && this.bIsRightHanded) || (hand.IsLeft && !this.bIsRightHanded)) hRightHand = hand; 
+                else hLeftHand = hand; 
         }
     }
 
