@@ -33,11 +33,11 @@ public class RotationGesture : Gesture
 
             /* From leapmotion to unity:
                 xAxis [Leapmotion] = yAxis [Unity]
-                yAxis [Leapmotion] = zAxis [Unity] and this one is reverted
+                yAxis [Leapmotion] = zAxis [Unity]
 
                 Hence the weird-looking function call
             */
-            this.Robot.Rotate(Quaternion.Euler(0, xAngle, -yAngle));
+            this.Robot.Rotate(Quaternion.Euler(0, xAngle, yAngle));
         }
 
     }

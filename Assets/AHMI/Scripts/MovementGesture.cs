@@ -18,7 +18,7 @@ public class MovementGesture : Gesture
     }
 
     protected override void processGestures() {
-        Vector3 movementVector = new Vector3(-this.hLeftHand.PalmNormal.z , 0.0f, -this.hLeftHand.PalmNormal.x);
+        Vector3 movementVector = new Vector3(this.hLeftHand.PalmNormal.z , 0.0f, this.hLeftHand.PalmNormal.x);
         this.Robot.Move(movementVector);   
     }
 
