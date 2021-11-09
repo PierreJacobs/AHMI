@@ -70,7 +70,12 @@ public abstract class Gesture : MonoBehaviour
 
         if (fFrame.Hands.Count > 0){
             List<Hand> hands = fFrame.Hands;
-            foreach (Hand hand in hands) if (hand.IsRight) hRightHand = hand; else if (hand.IsLeft) hLeftHand = hand;
+            foreach (Hand hand in hands) 
+                if ((hand.IsRight && ChosenHand.righthand) || (hand.IsLeft && !ChosenHand.righthand)) {
+                    hRightHand = hand;
+                } else{
+                    hLeftHand = hand;
+                } 
         }
     }
 

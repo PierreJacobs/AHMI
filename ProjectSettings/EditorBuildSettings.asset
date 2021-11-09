@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/AHMI/Scene/MainMenu.unity
+    guid: 74fb14537d0db8744b29eb930b4e14f4
+  - enabled: 1
+    path: Assets/AHMI/Scene/TheExpanse.unity
+    guid: d1b11485add3c8342b223b2c5e3449e8
   m_configObjects: {}
