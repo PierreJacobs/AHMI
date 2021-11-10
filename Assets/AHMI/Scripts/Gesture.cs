@@ -25,7 +25,7 @@ public abstract class Gesture : MonoBehaviour
     protected Hand hRightHand { get; private set; }         // right hand (on controller detection)
     protected RobotBehaviours Robot { get; private set; }   // robot script to control movement and rotation
     protected Animator Animator { get; private set; }       // animator to play animations on screen
-    protected bool bIsRightHanded {get; private set; };     // Left-Handed or Right-Handed
+    protected bool bIsRightHanded {get; private set; }     // Left-Handed or Right-Handed
     
     ///<summary>
     /// Setup function, similar to a constructor
