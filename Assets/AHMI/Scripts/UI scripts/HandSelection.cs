@@ -9,6 +9,9 @@ public class HandSelection : Gesture
     public GameObject LeftHandedText;
     public GameObject RightHandedText;
 
+    public GameObject LevelChanger;
+    private LevelChanger levelChangerScript;
+
     public float fElevationDiffenrenceFactor = 1.75f;
     public float fWavingTime = 1.0f;
     private float fElapsedTime;
@@ -26,6 +29,10 @@ public class HandSelection : Gesture
     protected override bool checkRightHand() { return true; }
 
     protected override void processGestures() {
+
+        if (levelChangerScript == null) levelChangerScript = LevelChanger.GetComponent<LevelChanger>();
+
+
         float fLeftHandElevation = hLeftHand.PalmPosition.y;
         float fRightHandElevation = hRightHand.PalmPosition.y;
 
@@ -52,7 +59,11 @@ public class HandSelection : Gesture
         }
 
         FIllMinMaxVelocity(xVelocity, minmaxVelocity);
-        if (this.isWaving(this.MinMaxVelocity, minmaxVelocity)) RunChosenHand.loadScene(this.bIsRightHand);
+        if (this.isWaving(this.MinMaxVelocity, minmaxVelocity)) { 
+            ChosenHand.righthand = this.bIsRightHand;
+            levelChangerScript.fadeToScene(1);
+            //RunChosenHand.loadScene(this.bIsRightHand); 
+        }
 
     }
 
