@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RunChosenHand : MonoBehaviour
 {
-    public void loadScene(bool righthand) {
+    public static void loadScene(bool righthand) {
         ChosenHand.righthand = righthand;
         SceneManager.LoadScene("TheExpanse");
     }
