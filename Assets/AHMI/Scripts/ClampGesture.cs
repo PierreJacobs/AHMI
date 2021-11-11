@@ -51,10 +51,12 @@ public class ClampGesture : Gesture
         
         if (!bIsPinched && this.GetThumbIndexDistance(this.hRightHand) < fActivateDistance && GetIMRPDistance(this.hRightHand).All(x => x < this.fIMRPDistance)) {
             print("Claw closes");
+            this.Animator.Play("Close Clamp");
             bIsPinched = true;
         }
         else if (bIsPinched && this.GetThumbIndexDistance(this.hRightHand) > fDeactivateDistance) {
             print("Clawn opens");
+            this.Animator.Play("Open Clamp");
             bIsPinched = false;
         }
     }

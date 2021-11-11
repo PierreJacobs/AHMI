@@ -56,7 +56,7 @@ public class PoleFire : MonoBehaviour
     
     int count = -1;
     float lastCollision;
-    float lastPower = 0.2f;
+    float lastPower = 0.0f;
 
     Vector3 lastPosition;
    
@@ -66,10 +66,10 @@ public class PoleFire : MonoBehaviour
     {
         drawMaterial = GetComponent<Renderer>().material;
         collisionEvents = new List<ParticleCollisionEvent>();
-        Vector4[] array = new Vector4[] { Vector4.zero, Vector4.zero,Vector4.zero,Vector4.zero,Vector4.zero };
+        Vector4[] array = new Vector4[20];
         drawMaterial.SetVectorArray("_Coordinate", array);
         drawMaterial.SetInt("_CoordinatesCount", 0);
-        drawMaterial.SetFloatArray("_Power", new float[]{0f,0f,0f,0f,0f});
+        drawMaterial.SetFloatArray("_Power", new float[20]);
     }
 
     void Update() {
@@ -78,15 +78,16 @@ public class PoleFire : MonoBehaviour
             //print(powers.Length);
             float power = powers[index];
             if(index == count && lastCollision > 0f) {
-                power += (lastPower-power*lastPower)*Time.deltaTime;
-                lastPower += 0.5f*Time.deltaTime;
+                if(power < lastPower)
+                    power = lastPower;
+                power += (0.2f-power*0.2f)*Time.deltaTime;
                 
             }
             else if(power > 0) {
                 power -= 0.1f*Time.deltaTime;
             }
-            if(index == count && lastPower > 0.2f)
-                lastPower -= 0.4f*Time.deltaTime;
+            if(index == count)
+                lastPower = power;
             //else if(lastCollision < -1f) drawMaterial.SetInt("_CoordinatesCount", 1);
             powers[index] = power;
         }
@@ -104,20 +105,20 @@ public class PoleFire : MonoBehaviour
         {        
  
             Vector3 vector = collisionEvents[0].intersection;
-            if(lastPosition == null || Vector3.Distance(vector, lastPosition) > 0.15f) {
+            //if(lastPosition == null || Vector3.Distance(vector, lastPosition) > 0.001f) {
                 Vector4[] array = drawMaterial.GetVectorArray("_Coordinate");
-                count = (count+1)%5;
+                count = (count+1)%20;
                 array[count] = vector;
                 drawMaterial.SetVectorArray("_Coordinate",array);
                 
                 int ccount = drawMaterial.GetInt("_CoordinatesCount");
-                if(ccount < 5)
+                if(ccount < 20)
                     drawMaterial.SetInt("_CoordinatesCount", ccount+1);
             
                 lastPosition = new Vector3(vector.x,vector.y,vector.z); 
                 
-            }   
-            lastCollision = 0.5f;   
+            //}   
+            lastCollision = 0.1f;   
         }
     }
 }
