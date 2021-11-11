@@ -48,7 +48,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoleFire : MonoBehaviour
+public class MeltingEffect : MonoBehaviour
 {
     Material drawMaterial;
 
