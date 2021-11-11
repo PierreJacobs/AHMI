@@ -96,9 +96,9 @@ Shader "Custom/FireShader"
             };
 
        
-            float _Power[5];
+            float _Power[20];
             int _CoordinatesCount = 0;
-            fixed3 _Coordinate[5];
+            fixed3 _Coordinate[20];
             fixed4 _PColor;
 
             v2f vert (VertexInput v)
