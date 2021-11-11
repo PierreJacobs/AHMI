@@ -6,9 +6,6 @@ using Leap;
 public class HandSelection : Gesture
 {
 
-    public GameObject LeftHandedText;
-    public GameObject RightHandedText;
-
     public GameObject LevelChanger;
     private LevelChanger levelChangerScript;
 
