@@ -32,7 +32,6 @@ public class HandSelection : Gesture
 
         if (levelChangerScript == null) levelChangerScript = LevelChanger.GetComponent<LevelChanger>();
 
-
         float fLeftHandElevation = hLeftHand.PalmPosition.y;
         float fRightHandElevation = hRightHand.PalmPosition.y;
 
@@ -62,7 +61,6 @@ public class HandSelection : Gesture
         if (this.isWaving(this.MinMaxVelocity, minmaxVelocity)) { 
             ChosenHand.righthand = this.bIsRightHand;
             levelChangerScript.fadeToScene(1);
-            //RunChosenHand.loadScene(this.bIsRightHand); 
         }
 
     }
