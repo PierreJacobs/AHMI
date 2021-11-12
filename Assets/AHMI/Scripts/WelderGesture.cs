@@ -17,18 +17,16 @@ public class WelderGesture : Gesture
 
         if (!this.Robot.IsCurrentArm(RobotBehaviours.Arms.Welder)) return;
 
-        if (!bIsHandClosed && this.IsHandClosed(this.hRightHand)) {
+        if (!bIsHandClosed && this.IsHandClosed(this.hRightHand)) { //fire when hand closed
             bIsHandClosed = true;
-            print("FIRING");
+            Debug.Log("FIRING");
             this.Animator.Play("Fire Welder");
-            //this.Animator.Play("SetFire");
             
         }
 
-        else if (bIsHandClosed && !this.IsHandClosed(this.hRightHand)) {
+        else if (bIsHandClosed && !this.IsHandClosed(this.hRightHand)) { //stop fire when hand opened
             bIsHandClosed = false;
-            print("NOT FIRING");
-            //this.Animator.Play("UnsetFire");
+            Debug.Log("NOT FIRING");
             this.Animator.Play("Unfire Welder");
         }
 
