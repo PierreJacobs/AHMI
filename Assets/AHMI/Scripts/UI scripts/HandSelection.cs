@@ -6,11 +6,11 @@ using Leap;
 public class HandSelection : Gesture
 {
 
-    public GameObject LevelChanger;
+    public GameObject LevelChanger;                     // Game object containing the scene changer script
     private LevelChanger levelChangerScript;
 
-    public float fElevationDiffenrenceFactor = 1.75f;
-    public float fWavingTime = 1.0f;
+    public float fElevationDiffenrenceFactor = 1.75f;   // One hand must be fElevationDiffenrenceFactor times higher than the other
+    public float fWavingTime = 1.0f;                    // Waving time in seconds => the hand must perform the waving gesture within 1 sec or it will reset
     private float fElapsedTime;
 
     private float [] LeftHandMinMaxVelocity = new float[2];
@@ -35,6 +35,8 @@ public class HandSelection : Gesture
         float xVelocity = 0;
         float [] minmaxVelocity = new float[2];
 
+        // Finds which hand is higher and uses its characteristics for later
+        // Left hand is higher
         if (this.isHigher(fLeftHandElevation, this.fElevationDiffenrenceFactor, fRightHandElevation)) {
             if (this.bIsRightHand || this.fElapsedTime < -this.fWavingTime) this.LeftHandMinMaxVelocity = new float[2];
             if (this.fElapsedTime < -this.fWavingTime) this.fElapsedTime = 0;
@@ -44,6 +46,7 @@ public class HandSelection : Gesture
             xVelocity = this.hLeftHand.PalmVelocity.x;
             minmaxVelocity = this.LeftHandMinMaxVelocity;
         }
+        // Right hand is higher
         else if (this.isHigher(fRightHandElevation, this.fElevationDiffenrenceFactor, fLeftHandElevation)) {
             if (!this.bIsRightHand || this.fElapsedTime < -this.fWavingTime) this.RightHandMinMaxVelocity = new float[2];
             if (this.fElapsedTime < -this.fWavingTime) this.fElapsedTime = 0;
@@ -55,6 +58,8 @@ public class HandSelection : Gesture
         }
 
         FIllMinMaxVelocity(xVelocity, minmaxVelocity);
+
+        // When the hand is considered waving, changes the scene => goes to TheExpanse.scene
         if (this.isWaving(this.MinMaxVelocity, minmaxVelocity)) { 
             ChosenHand.righthand = this.bIsRightHand;
             levelChangerScript.fadeToScene(1);
@@ -64,11 +69,23 @@ public class HandSelection : Gesture
 
     protected override void processOthers() { fElapsedTime -= Time.deltaTime; }
 
+    ///<summary>
+    /// Checks first > second * factor
+    ///</summary>
     private bool isHigher(float fFirstElevation, float factor, float fSecondElevation) { return fFirstElevation > fSecondElevation * factor; }
+    
+    
+    ///<summary>
+    /// Completes the array if the given xVelocity is higher than the highest contained value or lower than the lowest contained value
+    ///</summary>
     private void FIllMinMaxVelocity(float xVelocity, float [] lMinMaxVelocity) {
         if (xVelocity < 0 && xVelocity < lMinMaxVelocity[0]) lMinMaxVelocity[0] = xVelocity;
         else if (xVelocity > 0 && xVelocity > lMinMaxVelocity[1]) lMinMaxVelocity[1] = xVelocity;
     }
+
+    ///<summary>
+    /// Checks that the lMinMaxVelocity array contains lower and higher values than gMinMaxVelocity
+    ///</summary>
     private bool isWaving(float [] gMinMaxVelocity, float [] lMinMaxVelocity) { return (gMinMaxVelocity[0] > lMinMaxVelocity[0]) && (gMinMaxVelocity[1] < lMinMaxVelocity[1]); }
 
 }
